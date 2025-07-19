@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,Dimensions,TouchableOpacity,Image,ImageBackgroun
 import {FontAwesome} from '@expo/vector-icons'
 import {Players,row} from '../styles/forPlayers'
 import {Audio} from 'expo-av'
+import PlayerHome from './PlayerHome';
 soundObject = new Audio.Sound()
 export default class LudoBoard extends React.Component {
   constructor(props){
@@ -1124,43 +1125,17 @@ export default class LudoBoard extends React.Component {
         <View style={styles.wholeSetup}>
         {/* =============================== Upper Part ============================= */}
         <View style={row.Style}>
-          <View>
-          <TouchableOpacity  onPress={()=>{this.generateRandomNumber(1)}}>
-            <Image style={{ width : 90,height : 70,marginLeft : 30,marginBottom : 10}} source={this.state.image1} />
-          </TouchableOpacity>
-     
-          <View style={[Players.styles,{marginLeft : Dimensions.get("window").width/50,borderRightWidth : 1,marginTop : 2}]}>
-          <ImageBackground source={require("../assets/red.png")} style={{width: '100%', height: '100%'}}>
-            <View>
-              <View style={row.Style}>
-                <View style={[styles.places]}>
-                  <TouchableOpacity>
-                  {this.checkPostion(1,1,-11)}
-                  </TouchableOpacity>
-                </View>
-                <View style={[styles.places,{marginLeft : 90}]}>
-                <TouchableOpacity>
-                    {this.checkPostion(1,2,-21)}
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <View style={row.Style}>
-                <View style={[styles.places,{marginTop : 90}]} >
-                <TouchableOpacity>
-                    {this.checkPostion(1,3,-31)}
-                  </TouchableOpacity>
-                </View>
-                <View  style={[styles.places,{marginTop : 90,marginLeft : 90}]}>
-                <TouchableOpacity>
-                    {this.checkPostion(1,4,-41)}
-                  </TouchableOpacity>
-              </View>
-              </View>
-            </View>
-          </ImageBackground>
-          </View>
-         
-          </View>
+        <PlayerHome
+          player={1}
+          diceImage={this.state.image1}
+          onRoll={() => this.generateRandomNumber(1)}
+          containerStyle={{marginLeft: Dimensions.get('window').width/50, borderRightWidth: 1, marginTop: 2}}
+          background={require('../assets/red.png')}
+          startPositions={[-11,-21,-31,-41]}
+          checkPosition={(p,w,pos) => this.checkPostion(p,w,pos)}
+          styles={styles}
+          dicePosition="before"
+        />
           <View style={[row.Style,{ marginTop : 82,borderTopWidth : 0 }]}>
               <View style={[styles.first]}>
                   <View style={styles.item}>
@@ -1277,42 +1252,17 @@ export default class LudoBoard extends React.Component {
                   </View>
               </View>   
           </View>
-          <View>
-          <TouchableOpacity  onPress={()=>{ this.generateRandomNumber(2) }}>
-            <Image style={{ width : 90,height : 70,marginLeft : 30,marginBottom : 10}} source={this.state.image2} />
-          </TouchableOpacity>
-          <View style={[Players.styles,{borderLeftWidth : 1,marginTop : 1.7}]}>
-            <ImageBackground source={require("../assets/green.png")} style={{width: '100%', height: '100%'}}>
-              <View>
-                  <View style={row.Style}>
-                    <View style={styles.places}>
-                    <TouchableOpacity>
-                        {this.checkPostion(2,1,-12)}
-                      </TouchableOpacity>
-                    </View>
-                    <View style={[styles.places,{marginLeft : 90}]}>
-                    <TouchableOpacity>
-                        {this.checkPostion(2,2,-22)}
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                  <View style={row.Style}>
-                    <View style={[styles.places,{marginTop : 90}]}>
-                    <TouchableOpacity>
-                        {this.checkPostion(2,3,-32)}
-                      </TouchableOpacity>
-                    </View>
-                    <View style={[styles.places,{marginLeft : 90,marginTop : 90}]}>
-                    <TouchableOpacity>
-                        {this.checkPostion(2,4,-42)}
-                      </TouchableOpacity>
-                  </View>
-                </View>
-              </View>
-            </ImageBackground>
-               
-          </View>
-          </View>
+        <PlayerHome
+          player={2}
+          diceImage={this.state.image2}
+          onRoll={() => this.generateRandomNumber(2)}
+          containerStyle={{borderLeftWidth: 1, marginTop: 1.7}}
+          background={require('../assets/green.png')}
+          startPositions={[-12,-22,-32,-42]}
+          checkPosition={(p,w,pos) => this.checkPostion(p,w,pos)}
+          styles={styles}
+          dicePosition="before"
+        />
         
            </View>
         {/* =============================== Middle Part =============================== */}
@@ -1568,43 +1518,17 @@ export default class LudoBoard extends React.Component {
           </View>   
         </View>
         {/* =============================== Lowest Part ============================= */}
-        <View style={row.Style}>
-          <View>
-          <View style={[Players.styles,{marginLeft : Dimensions.get("window").width/50,borderRightWidth : 1}]}>
-          <ImageBackground source={require("../assets/blue.png")} style={{width: '100%', height: '100%'}}>
-            <View>
-            <View style={row.Style}>
-                <View style={styles.places}>
-                <TouchableOpacity >
-                    {this.checkPostion(4,1,-14)}
-                  </TouchableOpacity>
-                </View>
-                <View style={[styles.places,{marginLeft : 90}]}>
-                <TouchableOpacity >
-                    {this.checkPostion(4,2,-24)}
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <View style={row.Style}>
-                <View style={[styles.places,{marginTop : 90}]}>
-                <TouchableOpacity >
-                    {this.checkPostion(4,3,-34)}
-                  </TouchableOpacity>
-                </View>
-                <View style={[styles.places,{marginLeft : 90,marginTop : 90}]}>
-                <TouchableOpacity >
-                    {this.checkPostion(4,4,-44)}
-                  </TouchableOpacity>
-              </View>
-              </View>
-            </View>
-          </ImageBackground>
-          
-          </View>
-          <TouchableOpacity  onPress={()=>{this.generateRandomNumber(4)}}>
-            <Image style={{ width : 90,height : 70,marginLeft : 30,marginTop : 10}} source={this.state.image4} />
-          </TouchableOpacity>
-          </View>
+        <PlayerHome
+          player={4}
+          diceImage={this.state.image4}
+          onRoll={() => this.generateRandomNumber(4)}
+          containerStyle={{marginLeft: Dimensions.get('window').width/50, borderRightWidth: 1}}
+          background={require('../assets/blue.png')}
+          startPositions={[-14,-24,-34,-44]}
+          checkPosition={(p,w,pos) => this.checkPostion(p,w,pos)}
+          styles={styles}
+          dicePosition="after"
+        />
          <View style={row.Style}>
               <View style={styles.first}>
                   <View style={styles.item}>
@@ -1721,42 +1645,17 @@ export default class LudoBoard extends React.Component {
                   </View>
               </View>
           </View>
-          <View>
-            <View style={[Players.styles,{borderLeftWidth : 1}]}>
-            <ImageBackground source={require("../assets/yellow.png")} style={{width: '100%', height: '100%'}}>
-              <View>
-                  <View style={row.Style}>
-                    <View style={styles.places}>
-                    <TouchableOpacity >
-                        {this.checkPostion(3,1,-13)}
-                      </TouchableOpacity>
-                    </View>
-                    <View style={[styles.places,{marginLeft : 90}]}>
-                    <TouchableOpacity >
-                        {this.checkPostion(3,2,-23)}
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                  <View style={row.Style}>
-                    <View style={[styles.places,{marginTop : 90}]}>
-                    <TouchableOpacity >
-                        {this.checkPostion(3,3,-33)}
-                      </TouchableOpacity>
-                    </View>
-                    <View style={[styles.places,{marginLeft : 90,marginTop : 90}]}>
-                    <TouchableOpacity >
-                        {this.checkPostion(3,4,-43)}
-                      </TouchableOpacity>
-                  </View>
-                </View>
-            </View>
-            
-              </ImageBackground>
-            </View>
-          <TouchableOpacity  onPress={()=>{this.generateRandomNumber(3)}}>
-            <Image style={{ width : 90,height : 70,marginLeft : 30,marginTop : 10}} source={this.state.image3} />
-          </TouchableOpacity>
-          </View>
+        <PlayerHome
+          player={3}
+          diceImage={this.state.image3}
+          onRoll={() => this.generateRandomNumber(3)}
+          containerStyle={{borderLeftWidth: 1}}
+          background={require('../assets/yellow.png')}
+          startPositions={[-13,-23,-33,-43]}
+          checkPosition={(p,w,pos) => this.checkPostion(p,w,pos)}
+          styles={styles}
+          dicePosition="after"
+        />
         </View>
         <View style={styles.message}>
           <Text style={{color : "red",fontSize : 30,marginLeft : 60,marginTop : 20}}> {this.state.turnMessage} {this.state.moveMessage} </Text>
