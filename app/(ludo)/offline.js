@@ -28,8 +28,8 @@ const LudoBoardScreen = () => {
 
   const isFocused = useIsFocused();
 
-  const [showStartIMG, setShowStartIMG] = useState<boolean>(false);
-  const [menuVisible, setMenuVisible] = useState<boolean>(false);
+  const [showStartIMG, setShowStartIMG] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
   const opacity = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
@@ -131,4 +131,4 @@ const LudoBoardScreen = () => {
   )
 }
 
-export default LudoBoardScreen
+export default LudoBoardScreen;
