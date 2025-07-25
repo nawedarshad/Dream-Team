@@ -35,7 +35,7 @@ export default function LudoModeScreen() {
 
   return (
     <ImageBackground 
-      source={require('./assets/bg.jpg')} 
+      source={require('./assets/images/bg.jpg')} 
       style={styles.container}
       resizeMode="cover"
     >

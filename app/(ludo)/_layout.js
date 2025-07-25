@@ -1,8 +1,15 @@
-// app/(tabs)/_layout.js
-import { Stack, Tabs } from 'expo-router';
+// app/_layout.js (or app/(tabs)/_layout.js depending on your project)
+import { Stack } from 'expo-router';
+import { Provider } from 'react-redux';
+import { store, persistor } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
-export default function Layout() {
+export default function RootLayout() {
   return (
-    <Stack screenOptions={{headerShown: false}} />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Stack screenOptions={{ headerShown: false }} />
+      </PersistGate>
+    </Provider>
   );
 }
