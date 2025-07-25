@@ -60,7 +60,7 @@ const Dice: React.FC<DiceProps> = ({ color, rotate, player, data }) => {
 
     const handleDicePress = async (predice: number) => {
 
-        const diceNumber = predice || Math.floor(Math.random() * 5) + 1;
+        const diceNumber = predice || Math.floor(Math.random() * 6) + 1;
         playSound('dice_roll');
         setDiceRolling(true)
         await delay(800);
