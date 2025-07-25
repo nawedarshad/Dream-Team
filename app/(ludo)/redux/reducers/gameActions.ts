@@ -72,8 +72,8 @@ export const handleForwardThunk = (playerNo: number, id: string, pos: number) =>
 
         if (
             areDifferentIds &&
-            !safeSpots.includes(finalPath[0].pos) &&
-            !starSpots.includes(finalPath[0].pos)
+            !safeSpots.includes(finalPath) &&
+            !starSpots.includes(finalPath)
         ) {
             const enemyPiece = finalPlot.find((p) => p.id[0] !== id[0]);
             const enemyId = enemyPiece.id[0];
@@ -91,7 +91,7 @@ export const handleForwardThunk = (playerNo: number, id: string, pos: number) =>
                     travelCount: 0
                 }))
 
-                await delay(0.4)
+                await delay(400)
                 i--;
                 if (i === 0) {
                     i = 52;
