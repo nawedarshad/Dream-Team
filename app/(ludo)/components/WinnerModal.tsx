@@ -3,7 +3,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
 import { useDispatch } from 'react-redux';
-import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 import LottieView from 'lottie-react-native';
 import GradientButton from './GradientButton';
 import Pile from './Pile';
