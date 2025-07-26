@@ -68,9 +68,10 @@ const Dice: React.FC<DiceProps> = ({ color, rotate, player, data }) => {
         setDiceRolling(false);
         const isAnyPieceAlive = data?.findIndex((e) => e.pos !== 0 && e.pos !== 57);
         const isAnyPieceLocked = data?.findIndex((e) => e.pos !== 0);
+        const isAnyPieceAtStart = data?.findIndex((e) => e.pos === 0);
 
         if (isAnyPieceAlive == -1) {
-            if (diceNumber === 6) {
+            if (diceNumber === 6 && isAnyPieceAtStart !== -1) {
                 dispatch(enablePileSelection({ playerNo: player }))
             } else {
                 let chancePlayer = player + 1;
