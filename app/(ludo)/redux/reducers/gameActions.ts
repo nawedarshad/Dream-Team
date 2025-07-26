@@ -128,7 +128,7 @@ export const handleForwardThunk = (playerNo: number, id: string, pos: number) =>
             }
         } else {
             let chancePlayer: number = playerNo + 1;
-            if (chancePlayer >= 4) {
+            if (chancePlayer > 4) {
                 chancePlayer = 1;
             }
             dispatch(updatePlayerChance({ chancePlayer }))
