@@ -78,14 +78,24 @@ const Dice: React.FC<DiceProps> = ({ color, rotate, player, data }) => {
                 if (chancePlayer > 4) {
                     chancePlayer = 1;
                 }
-                await delay(600);
+                await delay(300);
                 dispatch(updatePlayerChance({ chancePlayer }))
             }
         } else {
             const canMove = playerPieces.some((pile) => pile.travelCount + diceNumber <= 57 && pile.pos !== 0)
 
+            // Check if dice is 6 and there are no possible moves
+            if (diceNumber === 6 && !canMove) {
+                let chancePlayer = player + 1;
+                if (chancePlayer > 4) {
+                    chancePlayer = 1;
+                }
+                await delay(300);
+                dispatch(updatePlayerChance({ chancePlayer }))
+                return
+            }
+
             if (
-                (!canMove && diceNumber === 6 && isAnyPieceLocked == -1) ||
                 (!canMove && diceNumber !== 6 && isAnyPieceLocked != -1) ||
                 (!canMove && diceNumber !== 6 && isAnyPieceLocked == -1)
             ) {
@@ -93,11 +103,10 @@ const Dice: React.FC<DiceProps> = ({ color, rotate, player, data }) => {
                 if (chancePlayer > 4) {
                     chancePlayer = 1;
                 }
-                await delay(600);
+                await delay(300);
                 dispatch(updatePlayerChance({ chancePlayer }))
                 return
             }
-
 
             if (diceNumber === 6) {
                 dispatch(enablePileSelection({ playerNo: player }));
