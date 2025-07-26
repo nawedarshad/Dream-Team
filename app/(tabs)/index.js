@@ -186,7 +186,7 @@ export default function HomeScreen() {
               style={[styles.gameCard, styles.elevatedCard]}
             >
               <Image
-                source={require("../../assets/logo-white.png")}
+                source={require("../../assets/ludo.jpg")}
                 style={styles.gameImage}
               />
               <View style={styles.gameDetails}>

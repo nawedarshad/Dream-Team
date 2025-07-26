@@ -91,7 +91,7 @@ export const handleForwardThunk = (playerNo: number, id: string, pos: number) =>
                     travelCount: 0
                 }))
 
-                await delay(400)
+                await delay(1)
                 i--;
                 if (i === 0) {
                     i = 52;
