@@ -21,6 +21,7 @@ interface FourTriangleProps {
 
 interface PlayerPiecesItem {
     player: PLAYER_PIECE[];
+    playerNo: number;
     top: number;
     left: number;
     right: number;
@@ -31,12 +32,13 @@ interface PlayerPiecesItem {
 
 interface PlayerPiecesProps {
     player: PLAYER_PIECE[];
+    playerNo: number;
     style: any;
     pieceColor: string;
     translate: any;
 }
 
-const PlayerPieces: React.FC<PlayerPiecesProps> = memo(({ player, style, pieceColor, translate }) => {
+const PlayerPieces: React.FC<PlayerPiecesProps> = memo(({ player, playerNo, style, pieceColor, translate }) => {
     return (
         <View style={[styles.mainContainer, style]}>
             {player.map((piece, idx) => {
@@ -54,7 +56,7 @@ const PlayerPieces: React.FC<PlayerPiecesProps> = memo(({ player, style, pieceCo
                     >
                         <Pile
                             cell={true}
-                            player={player}
+                            player={playerNo}
                             onPress={() => null}
                             pieceId={piece.id}
                             color={pieceColor}
@@ -89,6 +91,7 @@ const FourTriangle: React.FC<FourTriangleProps> = ({ player1, player2, player3, 
         () => [
             {
                 player: player1,
+                playerNo: 1,
                 top: 55,
                 left: 15,
                 right: 0,
@@ -98,6 +101,7 @@ const FourTriangle: React.FC<FourTriangleProps> = ({ player1, player2, player3, 
             },
             {
                 player: player3,
+                playerNo: 3,
                 top: 52,
                 left: 15,
                 right: 0,
@@ -107,6 +111,7 @@ const FourTriangle: React.FC<FourTriangleProps> = ({ player1, player2, player3, 
             },
             {
                 player: player2,
+                playerNo: 2,
                 top: 20,
                 left: -2,
                 right: 0,
@@ -115,7 +120,8 @@ const FourTriangle: React.FC<FourTriangleProps> = ({ player1, player2, player3, 
                 translate: 'translateY'
             },
             {
-                player: player3,
+                player: player4,
+                playerNo: 4,
                 top: 20,
                 left: -2,
                 right: 0,
@@ -131,6 +137,7 @@ const FourTriangle: React.FC<FourTriangleProps> = ({ player1, player2, player3, 
             <PlayerPieces
                 key={index}
                 player={data.player.filter((e) => e.travelCount === 57)}
+                playerNo={data.playerNo}
                 style={{
                     top: data.top,
                     bottom: data.bottom,
